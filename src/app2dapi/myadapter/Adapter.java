@@ -7,7 +7,6 @@ import app2dapi.graphics.Canvas;
 public class Adapter implements App2D {
 
     private BackgammonAppInterface app;
-    private IpadInterface iPad;
 
     public Adapter(BackgammonAppInterface app) {
         this.app = app;
@@ -22,15 +21,14 @@ public class Adapter implements App2D {
     public boolean initialize(Device device) {
         double screenX = device.getScreen().getPixelWidth();
         double screenY = device.getScreen().getPixelHeight();
-        iPad.init();
-        iPad.turnOn();
-        iPad.updateViewport(screenX, screenY);
+        System.out.println("iPad screen width: " + screenX);
+        System.out.println("iPad screen height: " + screenY);
         return true;
     }
 
     @Override
     public boolean update(double time) {
-        return app.pieceCounter();
+        return app.pieceCounter(time);
     }
 
     @Override
